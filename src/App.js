@@ -4,7 +4,7 @@ import Feed from './Feed';
 import { useState } from 'react';
 
 function App() {
-  const [tweetList, setTweetList] = useState(['something', 'is', 'going', 'on']);
+  const [tweetList, setTweetList] = useState([]);
 
   return (
     <div className="App">
