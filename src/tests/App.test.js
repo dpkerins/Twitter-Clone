@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
-import App from '../App';
+import CreateTweet from '../newTweet';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders new tweet field', () => {
+  render(<CreateTweet />);
+  const newTweetField = screen.getByDisplayValue("What's happening?");
+  expect(newTweetField).toBeInTheDocument();
 });
 
