@@ -7,13 +7,11 @@ export default function CreateTweet(props) {
   const createTweetObject = (event) => {
     event.preventDefault();
     const tweetContent = event.target.tweetField.value;
-    if (tweetContent != '') {
-      const newTweetList = tweetList;
-      newTweetList.push(tweetContent)
-      setTweetList(newTweetList);
+    if (tweetContent !== '') {
+      setTweetList([tweetContent].concat(tweetList));
       event.target.tweetField.value = '';
     }
-    console.log(tweetList);
+    console.log(props.tweetList);
   }
 
   return (
