@@ -4,7 +4,7 @@ const useTweets = () => {
   const [tweets, setTweets] = useState([]);
 
   const getAllTweets = async () => {
-    const url = 'https://chitter-backend-api-v2.herokuapp.com/';
+    const url = 'https://chitter-backend-api-v2.herokuapp.com/peeps';
 
     const res = await fetch(url, { method: 'GET' });
     const json = await res.json();
