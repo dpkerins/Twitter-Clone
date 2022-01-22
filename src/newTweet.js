@@ -1,21 +1,21 @@
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import useTweetCreator from './hooks/useTweetCreator'
 
 export default function CreateTweet(props) {
-  const { tweetList, setTweetList } = props;
+  // const { tweetList, setTweetList } = props;
 
   const createTweetObject = (event) => {
     event.preventDefault();
     const tweetUser = event.target.username.value;
     const tweetContent = event.target.tweetField.value;
-    const tweetDate = new Date;
     const newTweet = {
-      user: tweetUser,
-      content: tweetContent,
-      date: tweetDate
+      user_id: tweetUser,
+      body: tweetContent
     }
     if (tweetContent !== '') {
-      setTweetList([newTweet].concat(tweetList));
+      // setTweetList([newTweet].concat(tweetList));
+      useTweetCreator(newTweet);
       event.target.tweetField.value = '';
     }
     console.log(props.tweetList);
