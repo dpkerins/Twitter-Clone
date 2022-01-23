@@ -1,4 +1,4 @@
-import CreateTweet from './newTweet';
+import CreateTweet from './CreateTweet';
 import Feed from './Feed';
 import useTweets from './hooks/useTweets';
 

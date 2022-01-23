@@ -1,9 +1,22 @@
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import useTweetCreator from './hooks/useTweetCreator'
 
 export default function CreateTweet(props) {
-  // const { tweetList, setTweetList } = props;
+
+  const createTweet = async (newTweet) => {
+    const url = 'https://chitter-backend-api-v2.herokuapp.com/peeps';
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Token token=a_valid_session_key'
+      },
+      body: {
+        user_id: 1,
+        body: JSON.stringify(newTweet.body)
+      }
+    });
+  };
 
   const createTweetObject = (event) => {
     event.preventDefault();
@@ -14,11 +27,9 @@ export default function CreateTweet(props) {
       body: tweetContent
     }
     if (tweetContent !== '') {
-      // setTweetList([newTweet].concat(tweetList));
-      useTweetCreator(newTweet);
+      createTweet(newTweet);
       event.target.tweetField.value = '';
     }
-    console.log(props.tweetList);
   }
 
   return (
