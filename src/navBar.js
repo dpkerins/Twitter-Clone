@@ -12,10 +12,12 @@ export default function NavBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Button color="inherit" as={Link} to="/">HOME</Button>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Twitter Clone
           </Typography>
+          <Button color="inherit" as={Link} to="/">HOME</Button>
+          <Button color="inherit" as={Link} to="/login">LOGIN</Button>
+          <Button color="inherit" as={Link} to="/signup">SIGNUP</Button>
           <IconButton
             size="large"
             edge="start"
