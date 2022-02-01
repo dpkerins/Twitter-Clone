@@ -2,20 +2,35 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 export default function CreateTweet(props) {
+  const currentSession = props.currentSession;
+  const currentUser = props.currentUser;
 
   const createTweet = async (newTweet) => {
-    const url = 'https://chitter-backend-api-v2.herokuapp.com/peeps';
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Token token=a_valid_session_key'
-      },
-      body: {
-        user_id: 1,
-        body: JSON.stringify(newTweet.body)
+    var myHeaders = {
+      "Content-Type": "application/json",
+      "Authorization": `Token token=${currentSession}`
+    };
+
+    var raw = JSON.stringify({
+      "peep": {
+        "user_id": currentUser,
+        "body": newTweet.body
       }
     });
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    console.log(requestOptions);
+
+    fetch("https://chitter-backend-api-v2.herokuapp.com/peeps", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
   };
 
   const createTweetObject = (event) => {

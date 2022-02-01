@@ -2,12 +2,14 @@ import CreateTweet from './CreateTweet';
 import Feed from './Feed';
 import useTweets from './hooks/useTweets';
 
-export default function Home() {
+export default function Home(props) {
   const [tweetList, setTweetList] = useTweets();
+  const currentSession = props.currentSession;
+  const currentUser = props.currentUser;
 
   return (
     <div>
-      <CreateTweet tweetList={tweetList} setTweetList={setTweetList} />
+      <CreateTweet currentSession={currentSession} currentUser={currentUser}/>
       <Feed tweetList={tweetList}/>
     </div>
   )

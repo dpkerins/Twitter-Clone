@@ -28,15 +28,48 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function Login() {
+export default function Login(props) {
+  const newSession = async (loginData) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      "session": {
+        "handle": loginData.handle,
+        "password": loginData.password
+      }
+    });
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch("https://chitter-backend-api-v2.herokuapp.com/sessions", requestOptions)
+      .then(response => response.text())
+      .then(result => {
+        props.setCurrentSession(result.sessionId);
+        props.setCurrentUser(result.userId);
+      })
+      .catch(error => console.log('error', error));
+
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
     console.log({
       handle: data.get('handle'),
       password: data.get('password'),
     });
+    const loginData = {
+      handle: data.get('handle'),
+      password: data.get('password'),
+    }
+    const {userId, sessionId} = newSession(loginData);
+    
   };
 
   return (
