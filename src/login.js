@@ -49,9 +49,10 @@ export default function Login(props) {
 
     fetch("https://chitter-backend-api-v2.herokuapp.com/sessions", requestOptions)
       .then(response => response.text())
-      .then(result => {
-        props.setCurrentSession(result.sessionId);
-        props.setCurrentUser(result.userId);
+      .then(result => JSON.parse(result))
+      .then(json => {
+        props.setCurrentSession(json.session_key);
+        props.setCurrentUser(json.user_id);
       })
       .catch(error => console.log('error', error));
 
@@ -60,15 +61,11 @@ export default function Login(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      handle: data.get('handle'),
-      password: data.get('password'),
-    });
     const loginData = {
       handle: data.get('handle'),
       password: data.get('password'),
     }
-    const {userId, sessionId} = newSession(loginData);
+    newSession(loginData);
     
   };
 

@@ -35,7 +35,7 @@ export default function CreateTweet(props) {
 
   const createTweetObject = (event) => {
     event.preventDefault();
-    const tweetUser = event.target.username.value;
+    const tweetUser = currentUser;
     const tweetContent = event.target.tweetField.value;
     const newTweet = {
       user_id: tweetUser,
