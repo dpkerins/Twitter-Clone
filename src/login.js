@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -29,6 +30,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Login(props) {
+  let navigate = useNavigate();
   const newSession = async (loginData) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -54,8 +56,8 @@ export default function Login(props) {
         props.setCurrentSession(json.session_key);
         props.setCurrentUser(json.user_id);
       })
+      .then(() => navigate('/'))
       .catch(error => console.log('error', error));
-
   };
 
   const handleSubmit = (event) => {
