@@ -34,22 +34,31 @@ export default function Tweet(props) {
     setExpanded(!expanded);
   };
 
+  console.log(props.tweet);
+
+  const tweetDate = new Date(props.tweet.updated_at);
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  const tweetMonth = months[tweetDate.getMonth()];
+  const tweetDay = tweetDate.getDate();
+  const tweetYear = tweetDate.getFullYear();
+  const tweetLikes = props.tweet.likes.length;
+
   return (
     <div>
     <Card sx={{ maxWidth: 345 }}>
     <CardHeader
-      avatar={
-        <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-          {props.tweet.user.handle[0].toUpperCase()}
-        </Avatar>
-      }
-      action={
-        <IconButton aria-label="settings">
-          <MoreVertIcon />
-        </IconButton>
-      }
-      title={props.tweet.user.handle}
-      subheader={props.tweet.user.updated_at}
+          avatar={
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+              {props.tweet.user.handle[0].toUpperCase()}
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title={props.tweet.user.handle}
+          subheader={`${tweetMonth} ${tweetDay}, ${tweetYear}`}
     />
     {/* <CardMedia
       component="img"
@@ -63,9 +72,10 @@ export default function Tweet(props) {
       </Typography>
     </CardContent>
     <CardActions disableSpacing>
-      <IconButton aria-label="add to favorites">
+      <IconButton aria-label="like tweet">
         <FavoriteIcon />
       </IconButton>
+      <Typography>{ tweetLikes }</Typography>
       <IconButton aria-label="share">
         <ShareIcon />
       </IconButton>
