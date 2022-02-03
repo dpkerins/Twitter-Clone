@@ -1,6 +1,7 @@
 import CreateTweet from './CreateTweet';
 import Feed from './Feed';
 import useTweets from './hooks/useTweets';
+import Stack from '@mui/material/Stack';
 
 export default function Home(props) {
   const [tweetList, setTweetList] = useTweets();
@@ -8,9 +9,11 @@ export default function Home(props) {
   const currentUser = props.currentUser;
 
   return (
-    <div>
+    <Stack
+      alignItems="center"
+    >
       <CreateTweet currentSession={currentSession} currentUser={currentUser}/>
       <Feed tweetList={tweetList}/>
-    </div>
+    </Stack>
   )
 }

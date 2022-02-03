@@ -14,6 +14,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Box from '@mui/material/Box';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -44,8 +45,8 @@ export default function Tweet(props) {
   const tweetLikes = props.tweet.likes.length;
 
   return (
-    <div>
-    <Card sx={{ maxWidth: 345 }}>
+    <Box sx={{ width: '100%' }}>
+    <Card>
     <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -118,6 +119,6 @@ export default function Tweet(props) {
       </CardContent>
     </Collapse>
     </Card>
-    </div>
+    </Box>
   )
 }
