@@ -35,8 +35,6 @@ export default function Tweet(props) {
     setExpanded(!expanded);
   };
 
-  console.log(props.tweet);
-
   const tweetDate = new Date(props.tweet.updated_at);
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
   const tweetMonth = months[tweetDate.getMonth()];
