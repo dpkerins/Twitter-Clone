@@ -48,8 +48,8 @@ export default function CreateTweet(props) {
   }
 
   return (
-    <form onSubmit={createTweetObject}>
-      <TextField id="standard-basic" variant="standard" name="tweetField" placeholder="What's happening?" />
+    <form id="new-tweet" onSubmit={createTweetObject}>
+      <TextField id="new-tweet-field" variant="standard" name="tweetField" placeholder="What's happening?" />
       <Button type="submit" variant="contained" name="tweetButton">Tweet</Button>
     </form>
   )
