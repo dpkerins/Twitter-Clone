@@ -13,7 +13,7 @@ export default function Home(props) {
       alignItems="center"
     >
       <CreateTweet currentSession={currentSession} currentUser={currentUser}/>
-      <Feed tweetList={tweetList}/>
+      <Feed tweetList={tweetList} currentSession={currentSession} currentUser={currentUser}/>
     </Stack>
   )
 }

@@ -35,12 +35,27 @@ export default function Tweet(props) {
     setExpanded(!expanded);
   };
 
-  // const addLike = () => {
-  //   const url = 'https://chitter-backend-api-v2.herokuapp.com/peeps';
+  const addLike = async (tweet) => {
+    const url = `https://chitter-backend-api-v2.herokuapp.com/peeps/${tweet.id}/likes/${props.currentUser}`;
 
-  //   const res = await fetch(url, { method: 'GET' });
-  //   const json = await res.json();
-  // }
+    var myHeaders = {
+      "Content-Type": "application/json",
+      "Authorization": `Token token=${props.currentSession}`
+    };
+
+    var requestOptions = {
+      method: 'PUT',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+
+    console.log(requestOptions);
+
+    fetch(url, requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
 
   const tweetDate = new Date(props.tweet.updated_at);
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -79,7 +94,7 @@ export default function Tweet(props) {
     </CardContent>
     <CardActions disableSpacing>
       <IconButton aria-label="like tweet">
-        <FavoriteIcon />
+            <FavoriteIcon onClick={() => {addLike(props.tweet)}}/>
       </IconButton>
       <Typography>{ tweetLikes }</Typography>
       <IconButton aria-label="share">

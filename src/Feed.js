@@ -2,10 +2,10 @@ import Tweet from './Tweet';
 import Stack from '@mui/material/Stack';
 
 export default function Feed(props) {
-  const { tweetList } = props;
+  const { tweetList, currentUser, currentSession } = props;
   const tweetDivList = tweetList.map((tweet) => {
     return (
-      <Tweet tweet={tweet} key={tweet.id}/>
+      <Tweet tweet={tweet} currentSession={currentSession} currentUser={currentUser} key={tweet.id}/>
     )
   })
 
