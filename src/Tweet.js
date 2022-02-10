@@ -28,19 +28,19 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function Tweet(props) {
-
   const [expanded, setExpanded] = React.useState(false);
+  const { currentUser, currentSession, tweet } = props;
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const addLike = async (tweet) => {
-    const url = `https://chitter-backend-api-v2.herokuapp.com/peeps/${tweet.id}/likes/${props.currentUser}`;
+  const addLike = async () => {
+    const url = `https://chitter-backend-api-v2.herokuapp.com/peeps/${tweet.id}/likes/${currentUser}`;
 
     var myHeaders = {
       "Content-Type": "application/json",
-      "Authorization": `Token token=${props.currentSession}`
+      "Authorization": `Token token=${currentSession}`
     };
 
     var requestOptions = {
@@ -94,7 +94,7 @@ export default function Tweet(props) {
     </CardContent>
     <CardActions disableSpacing>
       <IconButton aria-label="like tweet">
-            <FavoriteIcon onClick={() => {addLike(props.tweet)}}/>
+            <FavoriteIcon onClick={addLike}/>
       </IconButton>
       <Typography>{ tweetLikes }</Typography>
       <IconButton aria-label="share">
