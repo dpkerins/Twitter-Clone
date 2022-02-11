@@ -9,11 +9,11 @@ export default function Home(props) {
   const currentUser = props.currentUser;
 
   return (
-    <Stack
-      alignItems="center"
+    <div
+      id="main-page"
     >
       <CreateTweet currentSession={currentSession} currentUser={currentUser}/>
       <Feed tweetList={tweetList} currentSession={currentSession} currentUser={currentUser}/>
-    </Stack>
+    </div>
   )
 }
