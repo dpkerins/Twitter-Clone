@@ -9,11 +9,12 @@ export default function Home(props) {
   const currentUser = props.currentUser;
 
   return (
-    <div
+    <Stack
       id="main-page"
+      sx={{ width: '100%' }}
     >
       <CreateTweet currentSession={currentSession} currentUser={currentUser}/>
       <Feed tweetList={tweetList} currentSession={currentSession} currentUser={currentUser}/>
-    </div>
+    </Stack>
   )
 }

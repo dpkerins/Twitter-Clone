@@ -1,5 +1,6 @@
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 export default function CreateTweet(props) {
   const currentSession = props.currentSession;
@@ -48,9 +49,12 @@ export default function CreateTweet(props) {
   }
 
   return (
-    <div id="new-tweet" onSubmit={createTweetObject}>
-      <TextField id="new-tweet-field" variant="standard" name="tweetField" placeholder="What's happening?" />
+    <Stack id="new-tweet" onSubmit={createTweetObject}
+      direction="row"
+    >
+      <TextField id="new-tweet-field" variant="standard" name="tweetField" placeholder="What's happening?"
+      sx={{ width: '70%' }}/>
       <Button type="submit" variant="contained" name="tweetButton">Tweet</Button>
-    </div>
+    </Stack>
   )
 }
