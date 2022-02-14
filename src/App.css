@@ -43,7 +43,7 @@
   align-items: center;
 }
 
-#new-tweet {
+/* #new-tweet {
 width: 100%;
 display: flex;
 }
@@ -53,4 +53,4 @@ display: flex;
   height: 100px;
   border: 1px solid black;
   padding: 2px;
-}
+} */
