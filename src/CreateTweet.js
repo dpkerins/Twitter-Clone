@@ -51,10 +51,10 @@ export default function CreateTweet(props) {
   return (
     <Stack id="new-tweet" onSubmit={createTweetObject}
       direction="row"
-      sx={{ width: '100%' }}
+      sx={{ width: '100%', my: 2 }}
     >
       <TextField id="new-tweet-field" variant="standard" name="tweetField" placeholder="What's happening?"
-        sx={{ width: '100%', pr: 5 }}
+        sx={{ width: '100%', pr: 2 }}
         justifyContent="space-between"
       />
       <Button type="submit" variant="contained" name="tweetButton">Tweet</Button>
