@@ -50,6 +50,7 @@ export default function CreateTweet(props) {
 
   return (
     <Stack id="new-tweet" onSubmit={createTweetObject}
+      component="form"
       direction="row"
       sx={{ width: '100%', my: 2 }}
     >
